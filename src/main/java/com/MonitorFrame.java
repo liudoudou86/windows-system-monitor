@@ -2,51 +2,64 @@ package com;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * 测试类
- * windows内存监控页面
+ * windows内存监控界面
  * @author 豆儿
  * @since 2022/8/24
  */
 public class MonitorFrame {
 
     public void init() {
-        // 定义窗口
-        JFrame frame = new JFrame("CPU内存监控");
-        // 窗口大小
-        frame.setSize(300,300);
-        // 窗口可见性
-        frame.setVisible(true);
-        // 添加关闭事件
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // 添加容器
-        JPanel panel = new JPanel();
-        frame.setContentPane(panel);
 
         // 定义字体
-        Font f1 = new Font("微软雅黑", Font.PLAIN,12);
+        Font f1 = new Font("微软雅黑", Font.PLAIN,18);
 
-        // 调用读取系统参数的方法
-        String monitorCpu = MonitorSystem.cpu();
-        String monitorMem = MonitorSystem.mem();
-
-        // 向容器添加文本
+        // 向容器添加文本CPU
         JLabel labelCpu = new JLabel();
         Dimension cpuSize = labelCpu.getPreferredSize();
         labelCpu.setFont(f1);
-        labelCpu.setText("CPU占用率: " + monitorCpu + "%");
-        labelCpu.setBounds(30,30,cpuSize.width,cpuSize.height);
-        panel.add(labelCpu);
-
-        // 向容器添加文本
+        labelCpu.setBounds(0,0,cpuSize.width,cpuSize.height);
+        // 向容器添加文本MEM
         JLabel labelMem = new JLabel();
         Dimension memSize = labelMem.getPreferredSize();
         labelMem.setFont(f1);
-        labelMem.setText("内存占用率: " + monitorMem + "%");
-        labelMem.setBounds(30,90,memSize.width,memSize.height);
+        labelMem.setBounds(0,50,memSize.width,memSize.height);
+
+        // 添加计时器
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 调用读取系统参数的方法
+                String monitorCpu = MonitorSystem.cpu();
+                String monitorMem = MonitorSystem.mem();
+                // 实时显示数据
+                labelCpu.setText("CPU占用率: --->【" + monitorCpu + "%】");
+                labelMem.setText("内存占用率: --->【" + monitorMem + "%】");
+
+            }
+        });
+        timer.start();
+
+        // 定义工具窗口
+        JFrame frame = new JFrame("实时监控");
+        // 定义窗口大小
+        frame.setBounds(200,200,240,100);
+
+        // 添加容器
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        frame.setContentPane(panel);
+        // 将数据打印至label
+        panel.add(labelCpu);
         panel.add(labelMem);
+
+        // 窗口可见性，放在这里是因为如果放在开头数据就不会立即显示
+        frame.setVisible(true);
+        // 添加关闭事件
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
     public static void main(String[] args) {
