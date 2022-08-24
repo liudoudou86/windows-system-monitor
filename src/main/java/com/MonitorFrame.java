@@ -47,7 +47,7 @@ public class MonitorFrame {
         // 定义工具窗口
         JFrame frame = new JFrame("实时监控");
         // 定义窗口大小
-        frame.setBounds(200,200,240,100);
+        frame.setBounds(200,200,235,105);
 
         // 添加容器
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
