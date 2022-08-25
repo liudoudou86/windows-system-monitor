@@ -20,19 +20,16 @@ public class MonitorFrame {
 
         // 向容器添加文本CPU
         JLabel labelCpu = new JLabel();
-        Dimension cpuSize = labelCpu.getPreferredSize();
         labelCpu.setFont(f1);
-        labelCpu.setBounds(0,0,cpuSize.width,cpuSize.height);
         // 向容器添加文本MEM
         JLabel labelMem = new JLabel();
-        Dimension memSize = labelMem.getPreferredSize();
         labelMem.setFont(f1);
-        labelMem.setBounds(0,50,memSize.width,memSize.height);
 
         // 添加计时器
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 // 调用读取系统参数的方法
                 String monitorCpu = MonitorSystem.cpu();
                 String monitorMem = MonitorSystem.mem();
