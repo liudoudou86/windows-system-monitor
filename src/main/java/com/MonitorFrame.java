@@ -2,8 +2,6 @@ package com;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * 测试类
@@ -26,18 +24,15 @@ public class MonitorFrame {
         labelMem.setFont(f1);
 
         // 添加计时器
-        Timer timer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        Timer timer = new Timer(1000, e -> {
 
-                // 调用读取系统参数的方法
-                String monitorCpu = MonitorSystem.cpu();
-                String monitorMem = MonitorSystem.mem();
-                // 实时显示数据
-                labelCpu.setText("CPU占用率: --->【" + monitorCpu + "%】");
-                labelMem.setText("内存占用率: --->【" + monitorMem + "%】");
+            // 调用读取系统参数的方法
+            String monitorCpu = MonitorSystem.cpu();
+            String monitorMem = MonitorSystem.mem();
+            // 实时显示数据
+            labelCpu.setText("CPU占用率: --->【" + monitorCpu + "%】");
+            labelMem.setText("内存占用率: --->【" + monitorMem + "%】");
 
-            }
         });
         timer.start();
 
