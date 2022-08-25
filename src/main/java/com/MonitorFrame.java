@@ -4,10 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * 测试类
- * windows内存监控界面
- * @author 豆儿
- * @since 2022/8/24
+ * Description 监控界面
+ * @author Tesla Liu
+ * Date 2022/8/24 17:46
  */
 public class MonitorFrame {
 

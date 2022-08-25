@@ -5,11 +5,10 @@ import com.sun.management.OperatingSystemMXBean;
 import java.lang.management.ManagementFactory;
 
 /**
- * 测试类
- * 读取系统参数
- * @author 豆儿
- * @since 2022/8/24
- */
+ * Description 读取系统参数
+ * @author Tesla Liu
+ * Date 2022/8/24 17:04
+ **/
 public class MonitorSystem {
 
     private static final OperatingSystemMXBean OS_MXB = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
