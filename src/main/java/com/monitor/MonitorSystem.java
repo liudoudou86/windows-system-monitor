@@ -1,4 +1,4 @@
-package com;
+package com.monitor;
 
 import com.sun.management.OperatingSystemMXBean;
 
