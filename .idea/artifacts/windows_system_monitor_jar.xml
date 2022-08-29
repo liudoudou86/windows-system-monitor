@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="windows-system-monitor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/windows_system_monitor_jar</output-path>
+    <root id="archive" name="windows-system-monitor.jar">
+      <element id="module-output" name="windows-system-monitor" />
+    </root>
+  </artifact>
+</component>
