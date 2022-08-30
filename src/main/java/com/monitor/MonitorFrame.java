@@ -13,25 +13,22 @@ public class MonitorFrame {
     public void init() {
 
         // 定义字体
-        Font f1 = new Font("微软雅黑", Font.PLAIN,18);
+        Font font = new Font("微软雅黑", Font.BOLD,18);
 
         // 向容器添加文本CPU
         JLabel labelCpu = new JLabel();
-        labelCpu.setFont(f1);
+        labelCpu.setFont(font);
         // 向容器添加文本MEM
         JLabel labelMem = new JLabel();
-        labelMem.setFont(f1);
-
+        labelMem.setFont(font);
         // 添加计时器
-        Timer timer = new Timer(1000, e -> {
-
+        Timer timer = new Timer(3000, e -> {
             // 调用读取系统参数的方法
             String monitorCpu = MonitorSystem.cpu();
             String monitorMem = MonitorSystem.mem();
             // 实时显示数据
             labelCpu.setText("CPU占用率: --->【" + monitorCpu + "%】");
             labelMem.setText("内存占用率: --->【" + monitorMem + "%】");
-
         });
         timer.start();
 
