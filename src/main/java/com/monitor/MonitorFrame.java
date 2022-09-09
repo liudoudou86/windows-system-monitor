@@ -22,10 +22,10 @@ public class MonitorFrame {
         JLabel labelMem = new JLabel();
         labelMem.setFont(font);
         // 添加计时器
-        Timer timer = new Timer(3000, e -> {
+        Timer timer = new Timer(1000, e -> {
             // 调用读取系统参数的方法
-            String monitorCpu = MonitorSystem.cpu();
-            String monitorMem = MonitorSystem.mem();
+            int monitorCpu = MonitorSystem.cpu();
+            int monitorMem = MonitorSystem.mem();
             // 实时显示数据
             labelCpu.setText("CPU占用率: --->【" + monitorCpu + "%】");
             labelMem.setText("内存占用率: --->【" + monitorMem + "%】");
